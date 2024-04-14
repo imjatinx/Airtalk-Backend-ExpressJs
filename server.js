@@ -6,9 +6,8 @@ const { default: mongoose } = require('mongoose');
 require('dotenv').config();
 app.use(express.json())
 
-const connectDB = ()=>{
-    mongoose.connect(process.env.MONGO_URI)
-    console.log('Yay! Connection Successful.');
+const connectDB = () => {
+    mongoose.connect(process.env.MONGO_URI).then(() => console.log('Yay! Connection Successful.')).catch(err => console.log('Error connecting DB ==> ', err));
 }
 
 const userRouter = require('./routes/userRoutes');
